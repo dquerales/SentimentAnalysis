@@ -1,39 +1,37 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Mar  5 15:06:01 2023
+
+@author: Daniel
+"""
+# import xgboost as xgb
 import streamlit as st
-import pandas as pd
-import plotly.express as px
+# import pandas as pd
+# import numpy as np
+import joblib
 
-st.title('Dashboard')
-st.markdown('This is a dashboard')
 
-df = pd.read_csv('avocado.csv')
+#load model
+model = joblib.load(open('Models/pipe_clf_model_checkpoint.joblib', 'rb'))
+model_clf = model['pipeline_clf']
 
-st.subheader('Summary statistics')
 
-st.dataframe(df.head(5))
+st.title('Sentiment Analysis')
 
-col1, col2 = st.columns(2)
-col1.metric('Rows', df.shape[0])
-col2.metric('Columns', df.shape[1])
+text = st.text_input('Write your text review:')
 
-st.subheader('Overview')
 
-st.dataframe(df.describe())
+if st.button('Predict Sentiment'):
+    prediction = model_clf.predict([text])
 
-st.header('Line chart by geographies')
-
-with st.form('line_chart'):
-    selected_geography = st.selectbox(label='Geography', options=df['geography'].unique())
-    submitted = st.form_submit_button('Submit')
-    if submitted:
-        filtered_avocado = df[df['geography'] == selected_geography]
-        line_fig = px.line(filtered_avocado,
-                            x='date', y='average_price',
-                            color='type',
-                            title=f'Avocado Prices in {selected_geography}')
-        st.plotly_chart(line_fig)
+    if prediction == 1:
+        output = 'Good'
+    else:
+        output = 'Bad'
+        
+    st.success(f'The predicted sentiment is {output}')
 
 with st.sidebar:
     st.subheader('About')
-    st.markdown('This dashboard is made by Daniel Querales, using **Streamlit**')
-st.sidebar.image('https://streamlit.io/images/brand/streamlit-mark-color.png', width=50)
-
+    st.markdown('This webapp was made by Daniel Querales (d.querales@gmail.com) using **Streamlit**')
+# st.sidebar.image('https://streamlit.io/images/brand/streamlit-mark-color.png', width=50)
