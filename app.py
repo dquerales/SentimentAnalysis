@@ -18,7 +18,7 @@ st.title('Sentiment Analysis')
 
 text = st.text_input('Write your text review:')
 
-if st.button('Predict Sentiment'):
+if st.button('Predict Sentiment', use_container_width=True):
     prediction = model_clf.predict([text])
 
     if prediction == 1:
