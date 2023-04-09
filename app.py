@@ -22,6 +22,5 @@ if st.button('Predict Sentiment', use_container_width=True):
 
 with st.sidebar:
     st.subheader('About')
-    st.info('The data was obtained from: https://www.kaggle.com/ashishpatel26/sentimental-analysis-nlp for educational purposes only.')
     st.markdown('This webapp was made by Daniel Querales (d.querales@gmail.com) using **Streamlit**')
 st.sidebar.image('https://streamlit.io/images/brand/streamlit-mark-color.png', width=50)
