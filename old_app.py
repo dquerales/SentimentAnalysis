@@ -1,9 +1,9 @@
 import streamlit as st
 import joblib
-from transformers import pipeline
 
 #load model
-sentiment_pipeline = pipeline("sentiment-analysis")
+model = joblib.load(open('Models/pipe_clf_model_checkpoint.joblib', 'rb'))
+model_clf = model['pipeline_clf']
 
 #app title
 st.title('Sentiment Analysis')
@@ -13,8 +13,12 @@ text = st.text_input('Write your text review:')
 
 #predict
 if st.button('Predict Sentiment', use_container_width=True):
-   st.write(sentiment_pipeline(text))
-
+    prediction = model_clf.predict([text])
+    if prediction == 1:
+        output = 'Positive'
+    else:
+        output = 'Negative' 
+    st.success(f'The predicted sentiment is {output}')
 
 with st.sidebar:
     st.subheader('About')
