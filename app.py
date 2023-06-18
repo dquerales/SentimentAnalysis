@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 #load model
-model = joblib.load(open('models/pipe_clf_model_checkpoint.joblib', 'rb'))
+model = joblib.load(open('Models/pipe_clf_model_checkpoint.joblib', 'rb'))
 model_clf = model['pipeline_clf']
 
 #app title
