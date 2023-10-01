@@ -10,11 +10,17 @@ pip install -r "requirements.txt"
 
 ## Usage
 
-1. Run streamlit application
+1. Activate working enviroment
    
 ```
 conda activate webapp_env
+```
+2. Change to working directory
+```
 cd "working_directory"
+```
+3. Run streamlit application
+```
 streamlit run app.py
 ```
 
