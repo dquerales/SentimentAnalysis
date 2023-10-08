@@ -8,10 +8,10 @@ model_clf = model['pipeline_clf']
 st.set_page_config(page_title="Sentiment Analysis App", page_icon="🤡")
 
 #app title
-st.title('🤡 Sentiment Analysis')
+st.title('🤡 Text Sentiment Analysis')
 
 #input
-text = st.text_input('📝 Write your text review:')
+text = st.text_input('📝 Write your text:')
 
 #predict
 if st.button('Predict Sentiment', use_container_width=True):
