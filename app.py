@@ -5,8 +5,10 @@ import joblib
 model = joblib.load(open('model/pipe_clf_model_checkpoint.joblib', 'rb'))
 model_clf = model['pipeline_clf']
 
+st.set_page_config(page_title="Sentiment Analysis App", page_icon="🤡")
+
 #app title
-st.title('😀 Sentiment Analysis')
+st.title('🤡 Sentiment Analysis')
 
 #input
 text = st.text_input('📝 Write your text review:')
