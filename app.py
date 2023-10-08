@@ -6,18 +6,18 @@ model = joblib.load(open('model/pipe_clf_model_checkpoint.joblib', 'rb'))
 model_clf = model['pipeline_clf']
 
 #app title
-st.title('Sentiment Analysis')
+st.title('😀 Sentiment Analysis')
 
 #input
-text = st.text_input('Write your text review:')
+text = st.text_input('📝 Write your text review:')
 
 #predict
 if st.button('Predict Sentiment', use_container_width=True):
     prediction = model_clf.predict([text])
     if prediction == 1:
-        output = 'Positive'
+        output = '😀 Positive'
     else:
-        output = 'Negative' 
+        output = '😓 Negative' 
     st.success(f'The predicted sentiment is {output}')
 
 with st.sidebar:
