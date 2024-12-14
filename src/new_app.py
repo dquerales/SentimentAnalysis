@@ -15,7 +15,6 @@ text = st.text_input('Write your text review:')
 if st.button('Predict Sentiment', use_container_width=True):
    st.write(sentiment_pipeline(text))
 
-
 with st.sidebar:
     st.subheader('About')
     st.markdown('Made by [Daniel Querales](https://www.linkedin.com/in/danielquerales/)')

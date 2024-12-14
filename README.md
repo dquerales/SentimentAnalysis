@@ -6,23 +6,32 @@ Check the app [here](https://dquerales-webapp-app-xmgqcu.streamlit.app/)
 
 ## Installation
 
-1. Install requirements
+1. Create environment
+
+```
+conda create -n webapp_env python=3.10
+```
+
+2. Activate working enviroment
+   
+```
+conda activate webapp_env
+```
+
+3. Change to working directory
+
+```
+cd "working_directory"
+```
+
+4. Install requirements
 ```
 pip install -r "requirements.txt"
 ```
 
 ## Usage
 
-1. Activate working enviroment
-   
-```
-conda activate webapp_env
-```
-2. Change to working directory
-```
-cd "working_directory"
-```
-3. Run streamlit application
+1. Run streamlit application
 ```
 streamlit run app.py
 ```
